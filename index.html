@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint Dictator - Color Detector & Mixer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎨 Paint Dictator</h1>
+            <p>Detect Colors • Analyze Colors • Mix Colors • Discover Harmonies</p>
+        </header>
+
+        <!-- Image Upload Section -->
+        <section class="section">
+            <h2>📸 Upload Image to Detect Colors</h2>
+            <div class="upload-area">
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <div class="upload-content">
+                    <p>🖼️ Drag and drop an image here or click to select</p>
+                    <small>Supported formats: PNG, JPG, GIF, WebP</small>
+                </div>
+            </div>
+            <img id="preview" style="display: none; margin-top: 20px; max-width: 300px; border-radius: 8px;">
+        </section>
+
+        <!-- Detection Section -->
+        <section class="section" id="detectionSection" style="display: none;">
+            <h2>🎯 Detected Colors</h2>
+            <div class="colors-container" style="display: none;">
+                <div id="detectedColors" class="color-palette"></div>
+                <small>Click any color to analyze it</small>
+            </div>
+        </section>
+
+        <!-- Manual Color Picker -->
+        <section class="section">
+            <h2>🎨 Pick a Color Manually</h2>
+            <div class="color-picker-container">
+                <input type="color" id="colorPicker" value="#667eea">
+                <input type="text" id="colorHex" placeholder="#667eea" value="#667eea">
+                <button id="analyzeBtn" class="btn btn-primary">Analyze Color</button>
+            </div>
+        </section>
+
+        <!-- Color Analysis Section -->
+        <section class="section" id="analysisSection" style="display: none;">
+            <h2>🔍 Color Analysis</h2>
+            <div class="analysis-container">
+                <div class="color-display">
+                    <div id="selectedColorBox" class="color-box-large"></div>
+                </div>
+                <div class="color-info">
+                    <div class="info-item">
+                        <label>Color Name:</label>
+                        <span id="colorName">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>HEX:</label>
+                        <span id="hexValue">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>RGB:</label>
+                        <span id="rgbValue">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>HSL:</label>
+                        <span id="hslValue">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Mixer Section -->
+        <section class="section" id="mixerSection" style="display: none;">
+            <h2>🎨 Color Mixer</h2>
+            <div class="mixer-container">
+                <div class="mixer-column">
+                    <h4>Color 1</h4>
+                    <input type="color" id="color1Picker" value="#FF0000">
+                    <div class="color-box-medium" id="color1Box"></div>
+                    <p id="color1Label">#FF0000</p>
+                </div>
+
+                <div class="mixer-plus">+</div>
+
+                <div class="mixer-column">
+                    <h4>Color 2</h4>
+                    <input type="color" id="color2Picker" value="#0000FF">
+                    <div class="color-box-medium" id="color2Box"></div>
+                    <p id="color2Label">#0000FF</p>
+                </div>
+
+                <div class="mixer-equals">=</div>
+
+                <div class="mixer-column">
+                    <h4>Result</h4>
+                    <div class="color-box-medium" id="resultBox"></div>
+                    <p id="resultLabel">#8000FF</p>
+                    <button id="reverseBtn" class="btn btn-secondary btn-small">Reverse</button>
+                </div>
+            </div>
+
+            <div id="reverseResultContainer" style="display: none; margin-top: 20px;">
+                <h5>🔄 What Colors Create This?</h5>
+                <div id="reverseResults"></div>
+            </div>
+
+            <button id="resetMixerBtn" class="btn btn-secondary" style="margin-top: 15px;">Reset Mixer</button>
+        </section>
+
+        <!-- Color Harmony Section -->
+        <section class="section" id="harmonySection" style="display: none;">
+            <h2>🌈 Color Harmonies</h2>
+            <div id="harmonies" class="harmonies-container"></div>
+        </section>
+
+        <!-- Hidden canvas for color detection -->
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <footer class="footer">
+        <p>Created with 💜 | Paint Dictator v1.0</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
